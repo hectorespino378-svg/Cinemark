@@ -1,0 +1,674 @@
+/* ==========================================================================
+   1. RESETEO Y CONFIGURACIÓN GENERAL (Evita márgenes raros del navegador)
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #0b0b0b; /* Fondo oscuro elegante */
+    color: #ffffff;
+    overflow-x: hidden; /* Evita desbordamiento horizontal */
+}
+
+/* ==========================================================================
+   2. ESTILOS DEL ENCABEZADO (Header & Nav) - Compartido en ambas páginas
+   ========================================================================== */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%; /* Relleno para dar aire */
+    background-color: #0b0b0b;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    text-decoration:none;
+}
+
+.logo img{
+    width:60px;
+    height:60px;
+    object-fit:cover;
+    border-radius:50%;
+    border:2px solid #d4af37;
+    box-shadow:0 0 12px #d4af37;
+    transition:.3s;
+}
+
+.logo img:hover{
+    transform:scale(1.08);
+}
+
+.logo span{
+    color:#d4af37;
+    font-size:40px;
+    font-weight:800;
+    letter-spacing:3px;
+}
+
+.nav-link {
+    color: #a0a0a0;
+    text-decoration: none;
+    margin-left: 25px; /* Espacio entre enlaces */
+    font-weight: 600;
+    font-size: 14px;
+    transition: color 0.3s ease; /* Efecto suave de cambio de color */
+}
+
+.nav-link:hover {
+    color: #ff3333; /* Cambia al rojo Nike al pasar el mouse */
+}
+
+/* Indicador visual en el menú para saber en qué página estamos metidos */
+.nav-link.active {
+    color: #ff3333;
+    border-bottom: 2px solid #ff3333;
+    padding-bottom: 5px;
+}
+
+/* ==========================================================================
+   3. ESTILOS DE LA PÁGINA DE INICIO (index.html)
+   ========================================================================== */
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 80vh;
+    padding: 0 10%;
+}
+
+/* Bloque de Texto Comercial */
+.hero-text {
+    flex: 1; /* Toma la mitad del espacio disponible */
+    padding-right: 50px;
+}
+
+.tagline {
+    color: #ff3333; /* Color de acento de la marca */
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.main-title {
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 1.1;
+    margin: 15px 0;
+}
+
+.highlight {
+    color: transparent;
+    -webkit-text-stroke: 1px #ffffff; /* Texto calado/outline muy usado en diseño gráfico */
+}
+
+.description {
+    color: #a0a0a0;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* Precios */
+.pricing-box {
+    margin-bottom: 30px;
+}
+
+.price {
+    font-size: 24px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-right: 15px;
+}
+
+.old-price {
+    font-size: 18px;
+    color: #555555;
+    text-decoration: line-through; /* Línea de descuento */
+}
+
+/* Botón Llamado a la Acción (CTA) */
+.btn-buy {
+    display: inline-block;
+    background-color: #ff3333;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 15px 35px;
+    font-weight: 600;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.btn-buy:hover {
+    background-color: #e02424;
+    transform: translateY(-3px); /* Pequeño salto visual hacia arriba */
+}
+
+/* Bloque de Imagen del Producto */
+.hero-image-box {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-img {
+    width: 110%; /* Ajuste de escala para que sobresalga ligeramente */
+    z-index: 2; /* Pone los tenis adelante del círculo */
+    transform: rotate(-15deg); /* Inclinación dinámica de diseño */
+    filter: drop-shadow(10px 20px 30px rgba(0,0,0,0.7)); /* Sombra realista para dar volumen */
+}
+
+/* Círculo gráfico de fondo */
+.circle-bg {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background: linear-gradient(45deg, #ff3333, #111111);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* ==========================================================================
+   4. ESTILOS DE LA PÁGINA DE OFERTAS (ofertas.html)
+   ========================================================================== */
+.offers-container {
+    min-height: 80vh;
+    padding: 40px 10%;
+}
+
+.offers-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title {
+    font-size: 42px;
+    font-weight: 800;
+    margin: 10px 0;
+}
+
+.subtitle {
+    color: #a0a0a0;
+    font-size: 16px;
+}
+
+/* Rejilla de productos (Distribución en columnas usando Flexbox) */
+.products-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px; /* Espacio de separación entre tarjetas */
+    flex-wrap: wrap; /* Permite que las tarjetas bajen en pantallas pequeñas */
+}
+
+/* Tarjeta individual del Producto */
+.product-card {
+    background-color: #121212; /* Un gris sutilmente más claro para contraste */
+    flex: 1;
+    min-width: 280px; /* Evita que las tarjetas se deformen al encogerse */
+    border-radius: 8px;
+    overflow: hidden; /* Corta las esquinas de la imagen según el radio del borde */
+    border: 1px solid #1a1a1a;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-10px); /* Efecto de flotación */
+    border-color: #ff3333; /* El borde brilla en el color de la marca */
+}
+
+/* Contenedor de la Imagen dentro de la tarjeta */
+.card-img-box {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    background-color: #1a1a1a;
+}
+
+.card-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Recorta la imagen de forma proporcional para llenar la caja */
+}
+
+/* Etiqueta flotante de Porcentaje de Descuento */
+.discount-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: #ff3333;
+    color: #ffffff;
+    font-weight: 800;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    z-index: 2;
+}
+
+/* Información del producto (Textos y precios) */
+.card-info {
+    padding: 25px;
+}
+
+.card-info h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+
+.card-desc {
+    color: #666666;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.card-pricing {
+    margin-bottom: 20px;
+}
+
+/* Botón Secundario dentro de las tarjetas */
+.btn-card {
+    display: block;
+    text-align: center;
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 600;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.btn-card:hover {
+    background-color: #ffffff;
+    color: #0b0b0b; /* Invierte colores para simular interacción */
+}
+
+/* ==========================================================================
+   5. PIE DE PÁGINA (Footer) - Compartido en ambas páginas
+   ========================================================================== */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 10%;
+    border-top: 1px solid #1a1a1a;
+    background-color: #0b0b0b;
+    font-size: 12px;
+    color: #555555;
+}
+
+.footer-links a {
+    color: #555555;
+    text-decoration: none;
+    margin-left: 20px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #ff3333;
+}
+
+/*==================================================
+           PÁGINA CONTACTO CINEMARK
+==================================================*/
+
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 8%;
+    background:#000;
+    border-bottom:3px solid #ff2d00;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    text-decoration:none;
+}
+
+.logo img{
+    width:60px;
+    height:60px;
+    object-fit:cover;
+    border-radius:50%;
+    border:2px solid #d4af37;
+    box-shadow:0 0 12px #d4af37;
+    transition:.3s;
+}
+
+.logo img:hover{
+    transform:scale(1.08);
+}
+
+.logo span{
+    color:#d4af37;
+    font-size:40px;
+    font-weight:800;
+    letter-spacing:3px;
+}
+
+nav{
+    display:flex;
+    gap:35px;
+}
+
+nav a{
+    text-decoration:none;
+    color:white;
+    font-size:18px;
+    font-weight:600;
+    transition:.3s;
+}
+
+nav a:hover,
+nav .activo{
+    color:#ffc107;
+}
+
+.contacto{
+
+    min-height:100vh;
+
+    background:
+    linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.75)),
+    url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1600&q=80");
+
+    background-size:cover;
+    background-position:center;
+
+    padding:70px 8%;
+}
+
+.titulo{
+
+    text-align:center;
+    margin-bottom:60px;
+
+}
+
+.titulo h1{
+
+    font-size:75px;
+    color:#ffc107;
+    text-transform:uppercase;
+    text-shadow:0 0 25px orange;
+
+}
+
+.titulo p{
+
+    margin-top:15px;
+    font-size:22px;
+    color:white;
+
+}
+
+.contenedor-contacto{
+
+    display:flex;
+    justify-content:center;
+    gap:60px;
+    flex-wrap:wrap;
+
+}
+
+.informacion{
+
+    width:430px;
+
+    background:rgba(120,0,0,.45);
+
+    border:2px solid #ff2d00;
+
+    border-radius:18px;
+
+    padding:35px;
+
+    box-shadow:0 0 30px rgba(255,70,0,.4);
+
+}
+
+.informacion h2{
+
+    color:#ffc107;
+
+    margin-bottom:25px;
+
+    font-size:34px;
+
+}
+
+.informacion p{
+
+    margin:20px 0;
+
+    font-size:20px;
+
+    line-height:1.6;
+
+}
+
+.formulario{
+
+    width:520px;
+
+    background:rgba(20,20,20,.92);
+
+    border:2px solid orange;
+
+    border-radius:18px;
+
+    padding:35px;
+
+    box-shadow:0 0 30px rgba(255,140,0,.4);
+
+}
+
+.formulario h2{
+
+    color:orange;
+
+    font-size:34px;
+
+    margin-bottom:25px;
+
+}
+
+.formulario label{
+
+    display:block;
+
+    margin:18px 0 8px;
+
+    font-size:18px;
+
+}
+
+.formulario input,
+.formulario textarea{
+
+    width:100%;
+
+    padding:15px;
+
+    background:#111;
+
+    color:white;
+
+    border:1px solid #ff7b00;
+
+    border-radius:8px;
+
+    font-size:17px;
+
+}
+
+.formulario textarea{
+
+    resize:none;
+
+    height:180px;
+
+}
+
+.formulario button{
+
+    width:100%;
+
+    margin-top:25px;
+
+    padding:18px;
+
+    background:linear-gradient(90deg,#ff6a00,#ffc107);
+
+    color:black;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.formulario button:hover{
+
+    transform:scale(1.03);
+
+    box-shadow:0 0 25px orange;
+
+}
+
+footer{
+
+    text-align:center;
+
+    background:#000;
+
+    color:white;
+
+    padding:25px;
+
+    border-top:3px solid #ff2d00;
+
+}
+
+.informacion i{
+    color:#ffc107;
+    font-size:20px;
+    width:30px;
+    margin-right:10px;
+}
+
+.horario{
+    display:inline-block;
+    margin-left:40px;
+    line-height:1.6;
+}
+
+.horario-info{
+    display:flex;
+    align-items:flex-start;
+    gap:15px;
+    margin:20px 0;
+}
+
+.horario-info i{
+    color:#ffc107;
+    font-size:22px;
+    margin-top:4px;
+}
+
+.horario-info span{
+    line-height:1.6;
+}
+.informacion p{
+    display:flex;
+    align-items:flex-start;
+    gap:15px;
+    margin:20px 0;
+    font-size:20px;
+    line-height:1.6;
+}
+
+.informacion i{
+    color:#ffc107;
+    font-size:22px;
+    width:25px;
+    margin-top:3px;
+}
+
+.informacion span{
+    flex:1;
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    text-decoration:none;
+
+}
+
+
+.logo img{
+
+    width:45px;
+
+    height:45px;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    border:2px solid #d4af37;
+
+    box-shadow:0 0 10px #d4af37;
+
+}
+
+
+.logo span{
+
+    color:#d4af37;
+
+    font-size:32px;
+
+    font-weight:800;
+
+    letter-spacing:3px;
+
+}
